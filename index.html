@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สมุดออมเงิน — Savings Passbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="desk">
+
+    <header class="masthead">
+      <p class="eyebrow">เลขที่บัญชี 00‑SAVE‑2569</p>
+      <h1>สมุดออมเงิน</h1>
+      <p class="subtitle">กรอกเป้าหมาย แล้วให้เราคำนวณว่าต้องออมวันละเท่าไหร่</p>
+    </header>
+
+    <main class="passbook">
+
+      <section class="ledger-form">
+        <div class="field">
+          <label for="goalName">เป้าหมาย</label>
+          <input type="text" id="goalName" placeholder="เช่น ทริปเชียงใหม่, โน้ตบุ๊กเครื่องใหม่">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="income">รายได้ต่อเดือน (บาท)</label>
+            <input type="number" id="income" placeholder="15000" min="0">
+          </div>
+          <div class="field">
+            <label for="amount">จำนวนเงินเป้าหมาย (บาท)</label>
+            <input type="number" id="amount" placeholder="6000" min="0">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="periodValue">ระยะเวลา</label>
+            <input type="number" id="periodValue" placeholder="60" min="1">
+          </div>
+          <div class="field">
+            <label for="periodUnit">หน่วย</label>
+            <select id="periodUnit">
+              <option value="days">วัน</option>
+              <option value="months">เดือน</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="calcBtn" class="btn btn-primary">คำนวณ</button>
+          <button id="saveBtn" class="btn btn-secondary">บันทึกลงสมุด</button>
+        </div>
+      </section>
+
+      <section class="stamp-panel" id="stampPanel">
+        <div class="stamp-empty" id="stampEmpty">
+          <p>ผลลัพธ์จะประทับตราที่นี่</p>
+        </div>
+
+        <div class="stamp-result hidden" id="stampResult">
+          <div class="stamp-badge" id="stampBadge">
+            <span id="stampWord">—</span>
+          </div>
+          <dl class="stamp-figures">
+            <div>
+              <dt>ออมต่อวัน</dt>
+              <dd id="figDaily">฿0</dd>
+            </div>
+            <div>
+              <dt>คิดเป็น % ของรายได้</dt>
+              <dd id="figPercent">0%</dd>
+            </div>
+            <div>
+              <dt>ครบกำหนดใน</dt>
+              <dd id="figDays">0 วัน</dd>
+            </div>
+          </dl>
+          <p class="stamp-note" id="stampNote"></p>
+        </div>
+      </section>
+
+    </main>
+
+    <section class="history">
+      <div class="history-head">
+        <h2>รายการที่บันทึกไว้</h2>
+        <button id="clearBtn" class="btn-text">ล้างทั้งหมด</button>
+      </div>
+      <ul class="history-list" id="historyList">
+        <!-- entries injected by app.js -->
+      </ul>
+      <p class="history-empty" id="historyEmpty">ยังไม่มีเป้าหมายที่บันทึกไว้</p>
+    </section>
+
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
